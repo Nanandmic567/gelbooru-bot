@@ -8,6 +8,13 @@ const Discord = require('discord.js'),
 
 /**
  * REQUIRE
+ * HTTP Request
+ */
+
+const axios = require('axios');
+
+/**
+ * REQUIRE
  * Express
  */
 
