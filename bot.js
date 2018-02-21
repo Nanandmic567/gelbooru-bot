@@ -92,8 +92,12 @@ client.on('message', message => {
       {
         axios.get(`https://gelbooru.com/index.php?page=dapi&s=tag&q=index&json=1&name_pattern=${tags.replace(/\s/g, '+')}&limit=3&order=DESC&orderby=count`)
           .then((suggestions) => {
-            console.log(suggestions);
-            message.reply(`Any results for \`${tags}\`\nHere some suggestions: `);
+            console.log(suggestions.data);
+            var suggestion1 = `${suggestions.data[0].tag} (${suggestions.data[0].count} results found.)`;
+                suggestion2 = `${suggestions.data[1].tag} (${suggestions.data[1].count} results found.)`;
+                suggestion3 = `${suggestions.data[2].tag} (${suggestions.data[2].count} results found.)`;
+
+            message.reply(`Any results for \`${tags}\`\nHere some suggestions: ${suggestion1, suggestions, suggestion3}`);
           });
       }
     });
