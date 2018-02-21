@@ -3,8 +3,10 @@
  * Dependencies
  */
 const Discord = require('discord.js'),
-      client = new Discord.Client(),
-      axios = require('axios');
+      client = new Discord.Client();
+
+const express = require('express'),
+      app = express();
 
 /**
  * LOGIN
@@ -79,3 +81,21 @@ client.on('message', message => {
     });
   } 
 })
+
+/*
+ * WEBSERVER
+ * Serve index.html
+ */
+
+app.get('/', (request, response) => {
+  response.sendFile(__dirname + 'index.html');
+});
+
+/*
+ * WEBSERVER
+ * Port
+ */
+
+ app.listen(process.env.PORT, () => {
+  console.log(`Webserver is listening on ${process.env.PORT}`);
+ });
