@@ -74,8 +74,6 @@ client.on('message', message => {
     var data = message.content.split('$'),
         tags = data[1],
         pid = Math.floor((Math.random()*1000) + 1);
-    // Reply with a confirmation message
-    message.reply(`Searching image for \`${tags}\` `);
     // API GET
     axios.get(`https://gelbooru.com/index.php?page=dapi&s=post&q=index&json=1&limit=1&tags=${tags}&pid=${pid}`)
     .then((image) => {
