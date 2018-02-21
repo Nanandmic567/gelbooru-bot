@@ -36,7 +36,7 @@ client.login(process.env.DISCORD_KEY);
  */
 
  client.on('ready', () => {
-   console.log('gelbooru-bot ready !');
+   console.log('gelbooru-bot is initialized !');
  })
 
 /**
@@ -90,7 +90,11 @@ client.on('message', message => {
       }
       else
       {
-        message.reply(`Any results for \`${tags}\``);
+        axios.get(`https://gelbooru.com/index.php?page=dapi&s=tag&q=index&json=1&name_pattern=${tags.replace(/\s/g, '+')}&limit=3&order=DESC&orderby=count`)
+          .then((suggestions) => {
+            console.log(suggestions);
+            message.reply(`Any results for \`${tags}\`\nHere some suggestions: `);
+          });
       }
     });
   } 
