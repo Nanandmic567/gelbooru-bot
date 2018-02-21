@@ -81,27 +81,8 @@ client.on('message', message => {
       image = image.data[0];
       if (image !== undefined)
       {
-        // Save url var
-        var url;
         // If a sample was found send the sample
-        console.log(image);
-        if (image.sample)
-        {
-          console.log(`https://simg3.gelbooru.com//samples/${image.directory}/sample_${image.hash}.jpg`);
-          var embed = {
-            "title": "Go to image source on Gelbooru",
-            "description": `You searched for: ${tags}`,
-            "url": `https://gelbooru.com/index.php?page=post&s=view&id=${image.id}`,
-            "color": 44678,
-            "image": {
-              "url": `https://simg3.gelbooru.com//samples/${image.directory}/sample_${image.hash}.jpg`
-            }
-          };
-          message.reply({embed});
-        }
-        else
-        { // If not, send the original file
-          console.log(`${image.file_url}`);
+        console.log(`${image.file_url}`);
           var embed = {
             "title": "Go to image source on Gelbooru",
             "description": `You searched for: ${tags}`,
@@ -112,7 +93,6 @@ client.on('message', message => {
             }
           };
           message.reply({embed});
-        }
       }
       else
       {
