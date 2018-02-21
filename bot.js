@@ -88,7 +88,6 @@ client.on('message', message => {
         // If a sample was found send the sample
         if (image.sample)
         {
-          url = `https://simg3.gelbooru.com//samples/${image.directory}/sample_${image.hash}.jpg`;
           console.log(`A sample was found for ${tags} : ${url}`);
           var embed = {
             "title": "Go to image source on Gelbooru",
@@ -96,14 +95,13 @@ client.on('message', message => {
             "url": `https://gelbooru.com/index.php?page=post&s=view&id=${image.id}`,
             "color": 44678,
             "image": {
-              "url": `${url}`
+              "url": `https://simg3.gelbooru.com//samples/${image.directory}/sample_${image.hash}.jpg`
             }
           };
           message.reply({embed});
         }
         else
         { // If not, send the original file
-          url = image.file_url;
           console.log(`A sample wasn't found for ${tags} : ${url}`);
           var embed = {
             "title": "Go to image source on Gelbooru",
@@ -111,7 +109,7 @@ client.on('message', message => {
             "url": `https://gelbooru.com/index.php?page=post&s=view&id=${image.id}`,
             "color": 44678,
             "image": {
-              "url": `${url}`
+              "url": `${image.file_url}`
             }
           };
           message.reply({embed});
