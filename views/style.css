@@ -1,9 +1,65 @@
-/* Override Bulma CSS */
-.hero.is-large .hero-body {
-    padding-bottom: 10rem;
-    padding-top: 10rem;
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html {
+  height: 100%;
+  width: 100%;
 }
 
-.message-body {
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
   padding: 0;
+  background-color: #18191c;
+}
+
+header {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: #FFF;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 36px;
+}
+
+.btn {
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  margin: 10px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 14px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  color: #fff;
+  background: #6772e5;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .025em;
+  transition: all .15s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #7795f8;
+  transform: translateY(-1px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.btn.inverse {
+  background: #fff;
+  color: #6772e5;
 }
