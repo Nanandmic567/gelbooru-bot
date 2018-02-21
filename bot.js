@@ -48,7 +48,25 @@ client.on('message', message => {
   // If the first char is '$'
   if (message.content === '$help')
   {
-    message.reply('\n`$`: Random images\n`$tag` Search for `tag`\n`$tag1+tag2` Search for `tag1` and `tag2`');
+    var embed = 
+    {
+        title: 'Commands',
+        fields: [
+          {
+            name: '$',
+            value: 'Search random images'
+          },
+          {
+            name: '$tag',
+            value: 'Search for tag'
+          },
+          {
+            name: '$tag1+tag2',
+            value: 'Search for tag1 and tag2'
+          }
+        ]
+    }
+    message.reply('', { embed: embed });
   }
   else if (message.content.charAt(0) === '$')
   {
@@ -72,20 +90,31 @@ client.on('message', message => {
         {
           url = `https://simg3.gelbooru.com//samples/${image.directory}/sample_${image.hash}.jpg`;
           console.log(`A sample was found for ${tags} : ${url}`);
+          var embed = {
+            "title": "Go to image source on Gelbooru",
+            "description": `You searched for: ${tags}`,
+            "url": `https://gelbooru.com/index.php?page=post&s=view&id=${image.id}`,
+            "color": 44678,
+            "image": {
+              "url": `${url}`
+            }
+          };
+          message.reply({embed});
         }
         else
         { // If not, send the original file
           url = image.file_url;
           console.log(`A sample wasn't found for ${tags} : ${url}`);
-        }
-        // Send the reply
-        if (image.source !== '')
-        { // If source isn't empty
-          message.reply(`${url} \n ${image.source}`);
-        }
-        else
-        {
-          message.reply(`${url}`);
+          var embed = {
+            "title": "Go to image source on Gelbooru",
+            "description": `You searched for: ${tags}`,
+            "url": `https://gelbooru.com/index.php?page=post&s=view&id=${image.id}`,
+            "color": 44678,
+            "image": {
+              "url": `${url}`
+            }
+          };
+          message.reply({embed});
         }
       }
       else
