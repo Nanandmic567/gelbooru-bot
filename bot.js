@@ -84,9 +84,10 @@ client.on('message', message => {
         // Save url var
         var url;
         // If a sample was found send the sample
+        console.log(image);
         if (image.sample)
         {
-          console.log(`A sample was found for ${tags} : ${url}`);
+          console.log(`https://simg3.gelbooru.com//samples/${image.directory}/sample_${image.hash}.jpg`);
           var embed = {
             "title": "Go to image source on Gelbooru",
             "description": `You searched for: ${tags}`,
@@ -100,7 +101,7 @@ client.on('message', message => {
         }
         else
         { // If not, send the original file
-          console.log(`A sample wasn't found for ${tags} : ${url}`);
+          console.log(`${image.file_url}`);
           var embed = {
             "title": "Go to image source on Gelbooru",
             "description": `You searched for: ${tags}`,
