@@ -1,0 +1,9 @@
+/* Override Bulma CSS */
+.hero.is-large .hero-body {
+    padding-bottom: 10rem;
+    padding-top: 10rem;
+}
+
+.message-body {
+  padding: 0;
+}

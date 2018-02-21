@@ -1,12 +1,19 @@
 /**
  * REQUIRE
- * Dependencies
+ * Discord related
  */
+
 const Discord = require('discord.js'),
       client = new Discord.Client();
 
+/**
+ * REQUIRE
+ * Express
+ */
+
 const express = require('express'),
       app = express();
+      webPort = process.env.PORT || 80;
 
 /**
  * LOGIN
@@ -88,7 +95,7 @@ client.on('message', message => {
  */
 
 app.get('/', (request, response) => {
-  response.sendFile(__dirname + 'index.html');
+  response.sendFile(__dirname + '/views/index.html');
 });
 
 /*
@@ -96,6 +103,13 @@ app.get('/', (request, response) => {
  * Port
  */
 
- app.listen(process.env.PORT, () => {
-  console.log(`Webserver is listening on ${process.env.PORT}`);
+ app.listen(webPort, () => {
+  console.log(`Webserver is listening on ${webPort}`);
  });
+
+ /*
+ * WEBSERVER
+ * Middleware
+ */
+
+app.use(express.static(__dirname + '/views'));
