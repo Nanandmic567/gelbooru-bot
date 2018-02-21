@@ -97,7 +97,7 @@ client.on('message', message => {
                 suggestion2 = `${suggestions.data[1].tag} (${suggestions.data[1].count} results found.)`;
                 suggestion3 = `${suggestions.data[2].tag} (${suggestions.data[2].count} results found.)`;
 
-            message.reply(`Any results for \`${tags}\`\nHere some suggestions: ${suggestion1, suggestions, suggestion3}`);
+            message.reply(`Any results for \`${tags}\`\nHere some suggestions: ${suggestion1} ${suggestion2} ${suggestion3}`);
           });
       }
     });
