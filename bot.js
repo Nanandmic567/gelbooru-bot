@@ -19,7 +19,7 @@ const axios = require('axios');
  */
 
 const express = require('express'),
-      app = express();
+      app = express(),
       webPort = process.env.PORT || 80;
 
 /**
@@ -45,7 +45,6 @@ client.login(process.env.DISCORD_KEY);
  */
 
 client.on('message', message => {
-  // If the first char is '$'
   if (message.content === '$help')
   {
     var embed = 
@@ -63,6 +62,18 @@ client.on('message', message => {
           {
             name: '$tag1+tag2',
             value: 'Search for tag1 and tag2'
+          },
+          {
+            name: '$tag+rating:explicit',
+            value: 'Search for tag : Explicit content only'
+          },
+          {
+            name: '$tag+rating:questionable',
+            value: 'Search for tag : Questionable content only'
+          },
+          {
+            name: '$tag+rating:safe',
+            value: 'Search  for tag : Safe content only'
           }
         ]
     }
@@ -73,7 +84,7 @@ client.on('message', message => {
     // Get tags from $command
     var data = message.content.split('$'),
         tags = data[1],
-        pid = Math.floor((Math.random()*1000) + 1);
+        pid = Math.floor((Math.random()*5000) + 1);
     // API GET
     axios.get(`https://gelbooru.com/index.php?page=dapi&s=post&q=index&json=1&limit=1&tags=${tags}&pid=${pid}`)
     .then((image) => {
