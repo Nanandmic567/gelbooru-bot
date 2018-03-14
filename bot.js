@@ -81,6 +81,7 @@ client.on('message', message => {
   }
   else if (message.content.charAt(0) === '$')
   {
+    console.log(message);
     // Get tags from $command
     var data = message.content.split('$'),
         tags = data[1].replace(' ', '+'),
@@ -107,32 +108,32 @@ client.on('message', message => {
       }
       else
       {
-        axios.get(`https://gelbooru.com/index.php?page=dapi&s=tag&q=index&json=1&name_pattern=${tags.replace(/\s/g, '+')}&limit=3&order=DESC&orderby=count`)
+        axios.get(`https://gelbooru.com/index.php?page=dapi&s=tag&q=index&json=1&name_pattern=${tags}&limit=3&order=DESC&orderby=count`)
           .then((suggestions) => {
             var suggestion1 = suggestions.data[0].tag,
                 suggestion2 = suggestions.data[1].tag,
-                suggestion3 = suggestions.data[2].tag;
-            var suggestion1count = `${suggestions.data[0].count} results found.`,
+                suggestion3 = suggestions.data[2].tag,
+                suggestion1count = `${suggestions.data[0].count} results found.`,
                 suggestion2count = `${suggestions.data[1].count} results found.`,
-                suggestion3count = `${suggestions.data[2].count} results found.`;
-            var embed = 
-            {
-                title: `Any results for ${tags}, Here some suggestions :`,
-                fields: [
-                  {
-                    name: $suggestion1,
-                    value: $suggestion1count
-                  },
-                  {
-                    name: $suggestion2,
-                    value: $suggestion2count
-                  },
-                  {
-                    name: $suggestion3,
-                    value: $suggestion3count
-                  }
-                ]
-            }
+                suggestion3count = `${suggestions.data[2].count} results found.`,
+                embed = 
+                {
+                    title: `Any results for ${tags}, Here some suggestions :`,
+                    fields: [
+                      {
+                        name: $suggestion1,
+                        value: $suggestion1count
+                      },
+                      {
+                        name: $suggestion2,
+                        value: $suggestion2count
+                      },
+                      {
+                        name: $suggestion3,
+                        value: $suggestion3count
+                      }
+                    ]
+                };
 
             message.reply({embed});
           });
