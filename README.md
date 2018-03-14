@@ -20,6 +20,6 @@ Here is the cheatsheet of Gelbooru : [cheatsheet](https://gelbooru.com/index.php
 
 ## Example
 
-- $blue_sky+cloud+1girl
+- $blue_sky cloud 1girl
 
 ![blue_sky+cloud+1girl](https://i.imgur.com/IWSZUD1.gif)
