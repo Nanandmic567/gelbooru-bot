@@ -1,13 +1,9 @@
 <p align="center">
-  
   <img src="https://i.imgur.com/vJvYIxA.png" height="150"/>
   <img src="https://i.imgur.com/LrjHOhq.png" height="150"/>
   <h3 align="center">Gelbooru Bot</h3>
   <p align="center">A Discord Bot for Gelbooru.</p>
-  
 </p>
-
-<img src="./src/assets/preview.gif">
 
 ## Commands
 
