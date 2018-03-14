@@ -83,7 +83,7 @@ client.on('message', message => {
   {
     // Get tags from $command
     var data = message.content.split('$'),
-        tags = data[1],
+        tags = data[1].replace(' ', '+'),
         pid = Math.floor((Math.random()*5000) + 1);
     // API GET
     axios.get(`https://gelbooru.com/index.php?page=dapi&s=post&q=index&json=1&limit=1&tags=${tags}&pid=${pid}`)
