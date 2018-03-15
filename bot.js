@@ -81,7 +81,6 @@ client.on('message', message => {
   }
   else if (message.content.charAt(0) === '$')
   {
-    console.log(message);
     // Get tags from $command
     var data = message.content.split('$'),
         tags = data[1].replace(' ', '+'),
@@ -94,7 +93,7 @@ client.on('message', message => {
       if (image !== undefined)
       {
         // If a sample was found send the sample
-        console.log(`${image.file_url}`);
+        console.log(`${message.author.username} requested '${message.content}' = ${image.file_url}`);
           var embed = {
             "title": "Go to image source on Gelbooru",
             "description": `You searched for: ${tags}`,
@@ -118,6 +117,7 @@ client.on('message', message => {
                 suggestion3count = `${suggestions.data[2].count} results found.`,
                 embed = 
                 {
+                    color: "",
                     title: `Any results for ${tags}, Here some suggestions :`,
                     fields: [
                       {
