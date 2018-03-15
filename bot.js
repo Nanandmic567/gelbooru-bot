@@ -121,16 +121,16 @@ client.on('message', message => {
                     title: `Any results for ${tags}, Here some suggestions :`,
                     fields: [
                       {
-                        name: $suggestion1,
-                        value: $suggestion1count
+                        name: suggestion1,
+                        value: suggestion1count
                       },
                       {
-                        name: $suggestion2,
-                        value: $suggestion2count
+                        name: suggestion2,
+                        value: suggestion2count
                       },
                       {
-                        name: $suggestion3,
-                        value: $suggestion3count
+                        name: suggestion3,
+                        value: suggestion3count
                       }
                     ]
                 };
