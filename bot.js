@@ -117,7 +117,6 @@ client.on('message', message => {
                 suggestion3count = `${suggestions.data[2].count} results found.`,
                 embed = 
                 {
-                    color: "",
                     title: `Any results for ${tags}, Here some suggestions :`,
                     fields: [
                       {
