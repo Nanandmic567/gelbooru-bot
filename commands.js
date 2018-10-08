@@ -5,7 +5,7 @@ exports.checkRequest = (message) => {
   if (message.content.charAt(0) === '$') {
     // Get tags from $command
     let imgLimit = message.content.includes('-5') ? 5 : 1
-    let data = message.content.split('$')
+    let data = message.content.replace('-5', '').split('$')
     let tags = data[1].replace(' ', '+')
 
     let pid = Math.floor((Math.random() * 5000) + 1)
