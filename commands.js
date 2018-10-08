@@ -30,7 +30,7 @@ exports.checkRequest = (message) => {
         })
       })
       .catch((error) => {
-        message.reply('Sorry, there was an unexpected error. Try with another tags', error)
+        message.reply('Sorry, there was an unexpected error. Try with another tags')
         signale.fatal(new Error(error))
       })
   }
@@ -52,7 +52,7 @@ exports.checkHelp = (message) => {
         },
         {
           name: '$tag -5',
-          value: 'Search for tag and get 5 results'
+          value: 'Search for tag and get 5 results at once'
         },
         {
           name: '$tag1 tag2',
