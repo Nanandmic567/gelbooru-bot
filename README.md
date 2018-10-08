@@ -10,6 +10,7 @@
 - `$help` Show commands below
 - `$` Search random images 
 - `$tag` Search for tag
+- `$tag -5` Search for tag and get 5 results at once
 - `$tag1 tag2` Search for tag1 and tag2
 - `$tag rating:explicit` Search for tag : Explicit content only
 - `$tag rating:questionable` Search for tag : Questionable content only
