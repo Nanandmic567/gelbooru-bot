@@ -23,7 +23,7 @@ exports.checkRequest = (message) => {
               }
             }
             message.reply({ embed })
-              .then(sent => signale.success(`${sent.author.username} requested '${message.content}' = ${image.file_url}`))
+              .then(() => signale.success(`${message.author.username} requested '${message.content}' = ${image.file_url}`))
               .catch(error => signale.fatal(new Error(error)))
           }
         })
@@ -72,7 +72,7 @@ exports.checkHelp = (message) => {
       ]
     }
     message.reply('', { embed: embed })
-      .then(sent => signale.success(`${sent.author.username} requested ${message.content}`))
+      .then(() => signale.success(`${message.author.username} requested ${message.content}`))
       .catch(error => signale.fatal(new Error(error)))
   }
 }
