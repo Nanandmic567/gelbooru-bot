@@ -5,16 +5,14 @@ exports.checkRequest = (message) => {
   if (message.content.charAt(0) === '$') {
     // Get tags from $command
     let imgLimit = message.content.includes('-5') ? 5 : 1
-    let data = message.content.replace('-5', '').split('$')
+    let data = message.content.replace('-5', '').replace(' ', '').split('$')
     let tags = data[1].replace(' ', '+')
-
     let pid = Math.floor((Math.random() * 5000) + 1)
-    // API GET
+
     axios.get(`https://gelbooru.com/index.php?page=dapi&s=post&q=index&json=1&limit=${imgLimit}&tags=${tags}&pid=${pid}`)
       .then((data) => {
         data.data.forEach(image => {
           if (image !== undefined) {
-            // If a sample was found send the sample
             let embed = {
               'title': 'Go to image source on Gelbooru',
               'description': `You searched for: ${tags}`,
@@ -25,7 +23,8 @@ exports.checkRequest = (message) => {
               }
             }
             message.reply({ embed })
-            signale.success(`${message.author.username} requested '${message.content}' = ${image.file_url}`)
+              .then(sent => signale.success(`${sent.author.username} requested '${message.content}' = ${image.file_url}`))
+              .catch(error => signale.fatal(new Error(error)))
           }
         })
       })
@@ -73,6 +72,7 @@ exports.checkHelp = (message) => {
       ]
     }
     message.reply('', { embed: embed })
-    signale.success(`${message.author.username} requested ${message.content}`)
+      .then(sent => signale.success(`${sent.author.username} requested ${message.content}`))
+      .catch(error => signale.fatal(new Error(error)))
   }
 }
