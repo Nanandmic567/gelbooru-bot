@@ -15,7 +15,7 @@ exports.checkRequest = (message) => {
           if (image !== undefined) {
             let embed = {
               'title': 'Go to image source on Gelbooru',
-              'description': `You searched for: ${tags}`,
+              'description': tags === '' ? 'No tags.' : `You searched for: ${tags}`,
               'url': `https://gelbooru.com/index.php?page=post&s=view&id=${image.id}`,
               'color': 44678,
               'image': {

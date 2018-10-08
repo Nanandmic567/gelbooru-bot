@@ -1,11 +1,13 @@
 /**
  * REQUIRE
- * Node
+ * Node + Misc
  */
 
 const path = require('path')
 
 const signale = require('signale')
+
+require('dotenv').config()
 
 /**
  * REQUIRE
@@ -48,15 +50,18 @@ client.login(process.env.DISCORD_KEY)
 
 client.on('ready', () => {
   signale.success('gelbooru-bot is initialized !')
+  client.user.setPresence({ game: { name: 'Prefix : $' } })
 })
 
 client.on('message', message => {
-  if (!message.channel.nsfw) {
-    message.reply('Your request must be in a nsfw channel.')
-    return signale.pending('/!\\ Request not in nsfw channel.')
+  if (message.content.startsWith('$')) {
+    if (!message.channel.nsfw) {
+      message.reply('Your request must be in a nsfw channel.')
+      return signale.pending('/!\\ Request not in nsfw channel.')
+    }
+    commands.checkHelp(message)
+    commands.checkRequest(message)
   }
-  commands.checkHelp(message)
-  commands.checkRequest(message)
 })
 
 client.on('error', (error) => {
