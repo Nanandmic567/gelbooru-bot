@@ -59,8 +59,9 @@ client.on('message', message => {
       message.reply('Your request must be in a nsfw channel.')
       return signale.pending('/!\\ Request not in nsfw channel.')
     }
-    commands.checkHelp(message)
+    commands.clearchannel(message)
     commands.checkRequest(message)
+    commands.checkHelp(message)
   }
 })
 
