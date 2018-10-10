@@ -50,7 +50,7 @@ client.login(process.env.DISCORD_KEY)
 
 client.on('ready', () => {
   signale.success('gelbooru-bot is initialized !')
-  client.user.setPresence({ game: { name: 'Prefix : $' } })
+  client.user.setPresence({ game: { name: 'Type $help or $tag' } })
 })
 
 client.on('message', message => {
